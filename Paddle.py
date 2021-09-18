@@ -1,7 +1,7 @@
 from turtle import Turtle
 
-Y_BOUNDS = 260
-USER_X_BOUND = 350
+Y_BOUNDS = -200
+X_BOUNDS = 500
 
 
 RIGHT = 0
@@ -19,7 +19,7 @@ class Paddle (Turtle):
         self.color('white')
         self.shapesize(stretch_wid=1, stretch_len=10)
         self.setheading(RIGHT)
-        self.goto(0, -200)
+        self.goto(0, Y_BOUNDS)
 
     def left(self):
         self.setheading(LEFT)
@@ -28,3 +28,11 @@ class Paddle (Turtle):
     def right(self):
         self.setheading(RIGHT)
         self.forward(CONISTENT_FORWARD)
+
+    def set_user_contraints(self):
+        if self.xcor() >= X_BOUNDS:
+            print("OUT OF BOUNDS~")
+            self.goto(X_BOUNDS, Y_BOUNDS)
+        if self.xcor() <= -X_BOUNDS:
+            print("OUT OF BOUNDS~")
+            self.goto(-X_BOUNDS, Y_BOUNDS)
